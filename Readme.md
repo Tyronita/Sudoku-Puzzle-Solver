@@ -79,6 +79,8 @@ An arc is `consistent` if the related variables are satisfied by the constraint.
     3. If domain lengths of all variables are 1 then the probelm is complete, else it starts backtrack_search.
     4. If the solution is complete, it will return it, else if it is unsolvable it will return -1 in the poaition of all entries.
 
+---
+
 ### Pros and cons of solution and choice of algorithm
     Pros:
     - The minimum remaining value / most constrained variable heuristic, fixed in place the shortest domains, which greatly reduced redundant computation.
