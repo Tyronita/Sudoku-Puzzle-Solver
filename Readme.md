@@ -2,9 +2,10 @@
 
 This readme documents each component of the solution and how they work together to produce a solution or conclude there is no solution for a given 9x9 puzzle.
 
+---
 
 ## Game state methods and modifying the board
----
+
 
 ### 1. is_solved
     Returns whether the current sudoku board is solved -> every row, column and subgrid should contain the values 1-9 once.
@@ -12,16 +13,15 @@ This readme documents each component of the solution and how they work together 
 ### 2. is_illegal_board
     Returns whether an unfinished sudoku it is an illegal board -> et least one row, column and subgrid should contain the values 1-9 more than once.
 
-## The Variables, Domain and Constraints
 ---
+
+## The Variables, Domain and Constraints
 
 A `variable` is defined by an empty space, represented by 0, on the suodku board.
 
 A `constraint` is defined by a rule which allows a value to exist at a position in the problem.
 
 A `domain ` is the list of legal values a variable can take according to a constraint.
-
----
 
 ### 1. get_variables
     Returns a list of the empty spaces (0s) in a given sudoku board.
@@ -35,17 +35,16 @@ A `domain ` is the list of legal values a variable can take according to a const
 ### 4. get_domain
     For every variable, returns the list of legal values a variable can take according to a constraint,.
 
+---
+
 ## Arc-consistency algorithm
 
----
 
 A `neighbour ` of a variable is another variable which is in the same row, column or subgrid as the variable.
 
 An `arc` is a bi-directional connection between two variables.
 
 An arc is `consistent` if the related variables are satisfied by the constraint.
-
----
 
 ### 1. get_neighbour_nodes
     Given a list of variables -> returns each variable's neighbours (in ths same subgrid, row or column.)
@@ -57,9 +56,9 @@ An arc is `consistent` if the related variables are satisfied by the constraint.
     Makes arcs between all arcs in the problem consistent by removing all domains of all inconsistent domain values.
     Returns a boolean indicating false if any of these domains are now empty and false if all arcs are consistent.
 
-## Backtracking algorithm
-
 ---
+
+## Backtracking algorithm
 
 ### 1. most_constrained_variable
     Picks the variable with the shortest domain.
@@ -69,9 +68,9 @@ An arc is `consistent` if the related variables are satisfied by the constraint.
     2. It then repeats the AC algorithm until arcs are inconstent or the board is solved.
     3. This process is repeated recursively until the end of the 
 
-## Complete solution
-
 ---
+
+## Complete solution
 
 ### sudoku_solver
     1. Pre-emptively check whether the given board was illegal.
