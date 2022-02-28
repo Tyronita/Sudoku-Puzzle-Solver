@@ -1,7 +1,6 @@
 import numpy as np, math
 from data_structures import Queue
 
-
 def get_variables(sudoku: object) -> list:
     """
     Returns a list of the empty spaces (0s) in a given sudoku board.
@@ -27,7 +26,6 @@ def get_variables(sudoku: object) -> list:
                 variables.append(postion)
 
     return variables
-
 
 
 def get_domains(sudoku: object, variables: list) -> list or None:
@@ -72,7 +70,6 @@ def get_domains(sudoku: object, variables: list) -> list or None:
         return domains
 
 
-
 def insert_value(sudoku: object, variable: tuple, value: int, return_copy: bool = False) -> None or object:
     """
     Inserts the value of a variable into the sudoku board at the variables position.
@@ -109,7 +106,6 @@ def insert_value(sudoku: object, variable: tuple, value: int, return_copy: bool 
         sudoku[row_idx][col_idx] = value
 
 
-
 def any_duplicates(a_array: object) -> bool:
     """
     Given a 1d numpy array of integers, return whether there is a repeated value that isn't zero.
@@ -126,7 +122,6 @@ def any_duplicates(a_array: object) -> bool:
         seen.add(element)
         
     return False
-
 
 
 def is_illegal_board(sudoku: object) -> bool:
@@ -159,7 +154,6 @@ def is_illegal_board(sudoku: object) -> bool:
     
     # else: valid
     return False
-
 
 
 def satisfies_constraint(sudoku: object, variable: tuple, value: int) -> bool:
@@ -198,7 +192,6 @@ def satisfies_constraint(sudoku: object, variable: tuple, value: int) -> bool:
         return False
     else:
         return True
-
 
 
 def revise_domain(sudoku: object, domains: dict, var_i: int, var_j: int) -> bool:
@@ -241,7 +234,6 @@ def revise_domain(sudoku: object, domains: dict, var_i: int, var_j: int) -> bool
             revised = True     
     
     return revised
-
 
 
 def get_neighbour_nodes(variables: list) -> list:
@@ -299,7 +291,6 @@ def get_neighbour_nodes(variables: list) -> list:
         neighbours[var_i] = var_i_neighbours
 
     return neighbours
-
 
 
 def arc_consistency(sudoku: object, variables: list, domains: dict) -> bool:
@@ -369,7 +360,6 @@ def arc_consistency(sudoku: object, variables: list, domains: dict) -> bool:
     return True
 
 
-
 def most_constrained_variable(domains: dict) -> int:
     """
     Returns the index of the variable with the smallest domain. (Minimum Remaining value)
@@ -384,7 +374,6 @@ def most_constrained_variable(domains: dict) -> int:
         return None
     else:
         return min(domains, key = lambda i: len(domains[i]))
-
 
 
 def backtrack_search(sudoku: object, revised_domains = None) -> bool:
@@ -427,7 +416,6 @@ def backtrack_search(sudoku: object, revised_domains = None) -> bool:
     
     # when no values in var_s domain worked
     return False
-
 
 
 def sudoku_solver(sudoku: object) -> object:
